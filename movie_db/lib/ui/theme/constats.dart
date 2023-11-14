@@ -19,13 +19,20 @@ class Constants {
     color: Colors.black,
     fontSize: 17,
   );
+  static const textStyleDiscription = TextStyle(
+    color: Colors.green,
+    fontSize: 17,
+  );
+  static const textStyleDiscriptionVPN =
+      TextStyle(color: Colors.red, fontSize: 18, fontWeight: FontWeight.bold);
 
-  static const text1 = Text(
-    'Для использования сочетания клавиш нажмите и удерживайте одну или более клавиш модификации, а затем нажмите последнюю клавишу сочетания. Для использования сочетания клавиш нажмите и удерживайте одну или более клавиш модификации, а затем нажмите последнюю клавишу сочетания.',
-    style: textStyleHader,
-  );
-  static const text2 = Text(
-    'Для использования сочетания клавиш нажмите и удерживайте одну или более клавиш ',
-    style: textStyleHader,
-  );
+  static const textDescription =
+      '''// Комментарии к данному Pet-проекту: Данные проект сделан на базе сайта https://www.themoviedb.org/ с открытым API кодом. К сожалению с территории России доступ к сайту заблокирован, поэтому для успешной работы приложения необходимо ''';
+
+  static const textDescriptionVPN = 'включить VPN';
+  static const textDescription2 = '''  на ноутбуке или телефоне \n
+Tак же, т.к.  это Pet-проект, логин и пароль от сайта поставлены по умолчанию. 
+Это сделано для удобства  и демонстрации работы без необходимости регистрации 
+на сайте.
+''';
 }

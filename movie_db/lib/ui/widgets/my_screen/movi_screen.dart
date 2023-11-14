@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/material.dart';
 import 'package:movie_db_hard/domain/api_client/api_client.dart';
 
@@ -11,11 +9,10 @@ class MovieWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final watch = //null;
-        MovieScreenModelProvider.watch(context)?.model;
+    final watch = MovieScreenModelProvider.watch(context)?.model;
 
     if (watch == null || watch.isProgressLoad == true) {
-      return const MovieScreenSkeletonWidget(); //! проверка на нул, чтобы не париться ниже
+      return const MovieScreenSkeletonWidget();
     }
 
     return Stack(
@@ -23,8 +20,7 @@ class MovieWidget extends StatelessWidget {
       children: [
         ListView.builder(
           padding: const EdgeInsets.only(top: 65),
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior
-              .onDrag, //!!!! скрывает клавиатуру
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           itemCount: watch.listMovies.length,
           itemExtent: 162,
           itemBuilder: (BuildContext context, int index) {
@@ -43,9 +39,6 @@ class MovieWidget extends StatelessWidget {
                       color: Colors.white,
                       border: Border.all(
                         color: const Color.fromARGB(182, 68, 68, 68),
-                        // width: 1.0,
-                        // style: BorderStyle.solid,
-                        // strokeAlign: BorderSide.strokeAlignInside
                       ),
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       boxShadow: const [
@@ -53,8 +46,6 @@ class MovieWidget extends StatelessWidget {
                           color: Colors.black45,
                           offset: Offset(0, 3),
                           blurRadius: 10,
-
-                          //blurStyle: BlurStyle.normal
                         )
                       ],
                     ),
@@ -86,11 +77,8 @@ class MovieWidget extends StatelessWidget {
                                       fontWeight: FontWeight.w800,
                                       color: Colors.black38)),
                               const SizedBox(height: 20),
-                              Text(
-                                  movie?.overview ??
-                                      'null', //!Например в MortalKombate нет описания почемуто///
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis),
+                              Text(movie?.overview ?? 'null',
+                                  maxLines: 2, overflow: TextOverflow.ellipsis),
                             ],
                           ),
                         ),
@@ -103,13 +91,7 @@ class MovieWidget extends StatelessWidget {
                     child: InkWell(
                         borderRadius: BorderRadius.circular(10),
                         onTap: () =>
-                            watch.onTapMovie(context, movie?.id ?? 507089)
-
-                        //onTapMovie();
-                        //! onTapMovie(movie.id);
-                        //print(movie.id);
-                        // },
-                        ),
+                            watch.onTapMovie(context, movie?.id ?? 507089)),
                   )
                 ],
               ),
@@ -119,15 +101,11 @@ class MovieWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
           child: TextField(
-            // controller: _serchController,
             onChanged: watch.serchMovies,
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
               filled: true,
-
-              ///!!!!!!!!!!!!!!!
               fillColor: Colors.white.withAlpha(210),
-
               labelText: 'Поиск',
             ),
           ),

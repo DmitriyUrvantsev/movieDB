@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_db_hard/domain/data_providers/session_data_provider.dart';
-
 import '../../../domain/api_client/api_client.dart';
 import 'main_screen_model.dart';
 import 'movi_screen.dart';
@@ -15,7 +14,6 @@ class MainScreenWidget extends StatefulWidget {
 class _MainScreenWidgetState extends State<MainScreenWidget> {
   final movieScreenModel = MovieScreenModel();
 
-  //final _modelAuth = AuthWidgetModel();
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -51,7 +49,8 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         ],
       ),
       body: IndexedStack(
-        // !!!!!! ВАЖНО!!!!! --IndexStack держит в памяти эти виджеты и !!!!ребилд не происходит
+        // !!!!!! ВАЖНО!!!!! --IndexStack держит в памяти эти виджеты и
+        // !!!!ребилд не происходит
         index: _selectedIndex,
         children: [
           MovieScreenModelProvider(

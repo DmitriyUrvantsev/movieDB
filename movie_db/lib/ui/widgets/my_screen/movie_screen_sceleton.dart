@@ -23,9 +23,6 @@ class MovieScreenSkeletonWidget extends StatelessWidget {
                   color: Colors.white,
                   border: Border.all(
                     color: const Color.fromARGB(182, 68, 68, 68),
-                    // width: 1.0,
-                    // style: BorderStyle.solid,
-                    // strokeAlign: BorderSide.strokeAlignInside
                   ),
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   boxShadow: const [
@@ -33,8 +30,6 @@ class MovieScreenSkeletonWidget extends StatelessWidget {
                       color: Colors.black45,
                       offset: Offset(0, 3),
                       blurRadius: 10,
-
-                      //blurStyle: BlurStyle.normal
                     )
                   ],
                 ),
@@ -91,7 +86,6 @@ class MovieScreenSkeletonWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
           child: TextField(
-            // controller: _serchController,
             onChanged: (value) {},
             decoration: InputDecoration(
               border: const OutlineInputBorder(),

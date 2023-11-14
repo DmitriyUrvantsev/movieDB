@@ -46,12 +46,6 @@ class MyAppModelProvider extends InheritedNotifier<MyAppModel> {
     final widget = context
         .getElementForInheritedWidgetOfExactType<MyAppModelProvider>()
         ?.widget;
-    return widget is MyAppModelProvider
-        ? widget
-        : null; //                   .notifier : null;
+    return widget is MyAppModelProvider ? widget : null;
   }
-
-  // @override
-  //bool updateShouldNotify(MyAppModelProvider oldWidget) {
-  //  return notifier != oldWidget.notifier;
 }

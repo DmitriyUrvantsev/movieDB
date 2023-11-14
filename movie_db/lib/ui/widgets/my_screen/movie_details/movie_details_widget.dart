@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_db_hard/ui/widgets/my_screen/movie_details/movie_details_sceleton.dart';
 import '../../../../main_model.dart';
 import 'movie_details_main_info_widget.dart';
-import 'movie_deteils_model.dart';
+import 'movie_details_model.dart';
 import 'series_cast_widget.dart';
 
 class MovieDetailsWidget extends StatefulWidget {

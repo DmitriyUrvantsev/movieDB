@@ -32,17 +32,13 @@ class HederWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //const textStyle = Constants.textStyleHader;
-    const text1 = Constants.text1;
-    const text2 = Constants.text2;
 
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(children: [
         FormWidget(),
-        SizedBox(height: 25),
-        text1,
-        SizedBox(height: 25),
-        text2,
+        const SizedBox(height: 25),
+        _DescriptionWidget(),
       ]),
     );
   }
@@ -164,5 +160,33 @@ class _ErrorMessageWidget extends StatelessWidget {
       style: const TextStyle(
           fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
     );
+  }
+}
+
+class _DescriptionWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Builder(builder: (context) {
+      return RichText(
+          // возможность использования разных стилей текста в одной строке? которая будет себя вести как единая строка
+
+          textAlign: TextAlign.start,
+          text: const TextSpan(
+            children: [
+              TextSpan(
+                text: Constants.textDescription,
+                style: Constants.textStyleDiscription,
+              ),
+              TextSpan(
+                text: Constants.textDescriptionVPN,
+                style: Constants.textStyleDiscriptionVPN,
+              ),
+              TextSpan(
+                text: Constants.textDescription2,
+                style: Constants.textStyleDiscription,
+              ),
+            ],
+          ));
+    });
   }
 }

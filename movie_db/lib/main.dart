@@ -6,7 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 //! ДЛЯ УСПЕШНОЙ РАБОТЫ ПРИЛОЖЕНИЯ НЕОБХОДИМО ВКЛЮЧИТЬ VPN НА ВАШЕМ УСТРОЙСТВЕ
-//1
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final model = MyAppModel();
@@ -18,7 +18,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final MyAppModel
-      model; //авторизованы уже или нет(в зависимости от sessionId != null в моделе)
+      model; 
   static final mainNavigation = MainNavigation();
 
   const MyApp({Key? key, required this.model}) : super(key: key);
@@ -41,16 +41,13 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale('ru', 'RU'), // Russian
-          Locale('en', 'US'), // English
+          Locale('ru', 'RU'), 
+          Locale('en', 'US'), 
         ],
         routes: mainNavigation.routes,
       
         initialRoute: mainNavigation.initialRoute(model.isAuth),
-        //! если передавать через Провайдер ...(model?.isAuth==true) - непонятно///
-
-        //   mainNavigation.initialRoute,
-        //'/',
+        
         onGenerateRoute: mainNavigation.onGenerateRoutes);
   }
 }

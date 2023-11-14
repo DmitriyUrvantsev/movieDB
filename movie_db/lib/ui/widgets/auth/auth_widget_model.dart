@@ -10,7 +10,7 @@ class AuthWidgetModel extends ChangeNotifier {
   final _sessionDataProvider = SessionDataProvider();
   final _apiClient = ApiClient();
   final loginController = TextEditingController(text: 'urvandimon');
-  final passwordController = TextEditingController(text: 'Rfpfl1979');
+  final passwordController = TextEditingController(text: 'movierfpfl1979');
 
   String? _errorText;
   String? get errorText => _errorText;
@@ -53,7 +53,9 @@ class AuthWidgetModel extends ChangeNotifier {
     } on ApiClientExeption catch (e) {
       switch (e.type) {
         case ApiClientExeptionType.network:
-          _errorText = 'Сервер не доступен. Проверьте подключение к интернету';
+          _errorText =
+              'Сервер не доступен. Проверьте подключение к интернету.\n'
+              'Если Вы в России - подключите VPN!!!';
           break;
         case ApiClientExeptionType.auth:
           _errorText = 'Неверный логин или пароль';

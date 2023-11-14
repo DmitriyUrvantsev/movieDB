@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../domain/api_client/api_client.dart';
-import 'movie_deteils_model.dart';
+import 'movie_details_model.dart';
 
 class MovieDetailMainInfoWidget extends StatelessWidget {
   const MovieDetailMainInfoWidget({
