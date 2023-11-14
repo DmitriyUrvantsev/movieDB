@@ -6,7 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 //! ДЛЯ УСПЕШНОЙ РАБОТЫ ПРИЛОЖЕНИЯ НЕОБХОДИМО ВКЛЮЧИТЬ VPN НА ВАШЕМ УСТРОЙСТВЕ
-
+//1
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final model = MyAppModel();
@@ -45,11 +45,7 @@ class MyApp extends StatelessWidget {
           Locale('en', 'US'), // English
         ],
         routes: mainNavigation.routes,
-        // {
-        //   '/': (context) => const AuthWidget(),
-        //   '/main': (context) => const MainScreenWidget(),
-        //   '/main/movie_details': (context) =>  MovieDetailsWidget(),
-        // },
+      
         initialRoute: mainNavigation.initialRoute(model.isAuth),
         //! если передавать через Провайдер ...(model?.isAuth==true) - непонятно///
 
