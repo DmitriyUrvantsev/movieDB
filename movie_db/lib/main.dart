@@ -4,8 +4,7 @@ import 'navigations/main_navigations.dart';
 import 'ui/theme/app_colors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-
-//! ДЛЯ УСПЕШНОЙ РАБОТЫ ПРИЛОЖЕНИЯ НЕОБХОДИМО ВКЛЮЧИТЬ VPN НА ВАШЕМ УСТРОЙСТВЕ
+//! ДЛЯ УСПЕШНОЙ РАБОТЫ ПРИЛОЖЕНИЯ НЕОБХОДИМО ВКЛЮЧИТЬ VPN НА ВАШЕМ УСТРОЙСТВЕ!
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,8 +16,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final MyAppModel
-      model; 
+  final MyAppModel model;
   static final mainNavigation = MainNavigation();
 
   const MyApp({Key? key, required this.model}) : super(key: key);
@@ -41,13 +39,11 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale('ru', 'RU'), 
-          Locale('en', 'US'), 
+          Locale('ru', 'RU'),
+          Locale('en', 'US'),
         ],
         routes: mainNavigation.routes,
-      
         initialRoute: mainNavigation.initialRoute(model.isAuth),
-        
         onGenerateRoute: mainNavigation.onGenerateRoutes);
   }
 }
