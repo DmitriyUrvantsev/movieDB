@@ -10,10 +10,8 @@ class SessionDataProvider {
 
 //?------------------------------------
   Future<String?> getSessionId() => _secureStorage.read(key: _Keys.sessionId);
-  //!получить sessionId
 
   Future<void> setSessionId(String? value) {
-    //!записать или удальть essionId
     if (value != null) {
       return _secureStorage.write(key: _Keys.sessionId, value: value);
     } else {
@@ -24,10 +22,8 @@ class SessionDataProvider {
 
 //?------------------------------------
   Future<String?> getAccountId() => _secureStorage.read(key: _Keys.accountId);
-  //!получить sessionId
 
   Future<void> setAccountId(String? value) {
-    //!записать или удальть essionId
     if (value != null) {
       return _secureStorage.write(key: _Keys.accountId, value: value);
     } else {

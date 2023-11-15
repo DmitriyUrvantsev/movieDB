@@ -1,10 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'package:movie_db_hard/domain/api_client/api_client.dart';
-
 import '../../../../domain/data_providers/session_data_provider.dart';
 import '../../../../domain/entity/movie_details.dart';
 import '../../../../navigations/main_navigations.dart';
@@ -88,7 +84,6 @@ class MovieDetailsModel extends ChangeNotifier {
 
     return mapCrew;
   }
-//?-------------------------
 
 //!-----------------------------
 //!-----------------------------
@@ -98,19 +93,11 @@ class MovieDetailsModel extends ChangeNotifier {
 //!-----------------------------
 //!-----------------------------
   void setupLocale(BuildContext context) {
-    //! нужно в MaterialApp прописать  localizationsDelegates:
-    //! и поменять  в ios/Runner.xcworkspace добавить локаль и в андроиде тоже ПОЛУЧАЕТСЯ
     final locale = Localizations.localeOf(context).toLanguageTag();
-    //берем текущую локаль, которая выставлена в телефоне
     if (_locale == locale) return;
     _locale = locale;
-    //назначаем локаль взятой из настроек телефона
-    _dateFormat =
-        DateFormat.yMd('en-US'); //- чтобы была дробь(тк в русской точки)
-    //_locale); //!для этого нужно подгрузить import 'package:intl/intl.dart';
-    //назначаем локаль для формата даты
-
-    loadMovieDetails(); //!ВОТ ИНТЕРЕСНО КАК СДЕЛАЛ ЖЕНЯ, N&R& когда локаль не изменилась return и соответственно загрузки нет
+    _dateFormat = DateFormat.yMd('en-US');
+    loadMovieDetails();
   }
 // -----------------------
 
@@ -127,13 +114,10 @@ class MovieDetailsModel extends ChangeNotifier {
 
 //--------------------------
   void showTrailer(context) {
-    //await _loadMovieDetails(locale, movieId);
     var youTubeKey = '0';
-    //var youTubeName = 'name';
     if (_movieDetails?.videos?.results != null) {
       if (_movieDetails!.videos!.results!.isNotEmpty) {
         youTubeKey = _movieDetails!.videos!.results!.first?.key ?? '0';
-        //youTubeName = _movieDetails!.videos!.results!.first?.name ?? '0';
       }
     }
 
@@ -162,10 +146,6 @@ class MovieDetailsModel extends ChangeNotifier {
     final accountId = await _sessionDataProvider.getAccountId();
 
     _isFavorite = !_isFavorite;
-
-    // if (sessionId == null || accountId == null) {
-    //   return;
-    // }
     try {
       await _apiClient.toglleFavorite(
           accountId: accountId ?? '0',
@@ -175,7 +155,7 @@ class MovieDetailsModel extends ChangeNotifier {
           mediaType: MediaType.movie);
       notifyListeners();
     } on ApiClientExeption catch (e) {
-      _handleApiClientExeption(e); //обработка ошибки
+      _handleApiClientExeption(e);
     }
   }
 
@@ -186,22 +166,10 @@ class MovieDetailsModel extends ChangeNotifier {
         onSessionExpired?.call(); //! вызов функции на выброс при разлогинивании
         break;
       default: //! это плохо. Типа нужно было обработать остальные ошибки, но они тут не могут произойти
-      //  print(exeption);
     }
   }
-
-//?-------------------------------------
-//?-------------------------------------
-
-  // void closeTrailer(context) {
-  //   Navigator.of(context).pop();
-  // }
 }
 
-//!-------------------------------------------
-//!-------------------------------------------
-//!-------------------------------------------
-//!-------------------------------------------
 //!-------------------------------------------
 //!-------------------------------------------
 class MovieDetailsModelProvider extends InheritedNotifier<MovieDetailsModel> {
@@ -224,12 +192,6 @@ class MovieDetailsModelProvider extends InheritedNotifier<MovieDetailsModel> {
     final widget = context
         .getElementForInheritedWidgetOfExactType<MovieDetailsModelProvider>()
         ?.widget;
-    return widget is MovieDetailsModelProvider
-        ? widget
-        : null; //                   .notifier : null;
+    return widget is MovieDetailsModelProvider ? widget : null;
   }
-
-  // @override
-  //bool updateShouldNotify(MainScreenModelProvider oldWidget) {
-  //  return notifier != oldWidget.notifier;
 }

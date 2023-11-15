@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-
 import '../../../domain/api_client/api_client.dart';
 import '../../../domain/data_providers/session_data_provider.dart';
 import '../../../navigations/main_navigations.dart';
@@ -22,30 +20,23 @@ class AuthWidgetModel extends ChangeNotifier {
   bool? _isAuthSecsess;
   bool? get isAuthSecsess => _isAuthSecsess;
 
-  // Future<void> getMovie() async {//!по хорошему разобраться почему не работает
-  //   await _apiClient.getPopularMovies(locale: 'en-US', page: 1);
-  //   notifyListeners();
-  //   print(',kz');
-  // }
-
   //!------------------------------------------
   Future<void> auth(context) async {
     final login = loginController.text;
     final password = passwordController.text;
-    //----------проверочки-------
+    //----------
     if (login.isEmpty || password.isEmpty) {
-      //проверка на не заполлненость пароля
       _errorText = 'Заполните логин и пароль';
-      notifyListeners(); //! выдает исключение
+      notifyListeners();
       return;
     }
     ////-------проверочки----------
 
     _errorText = null;
-    _isAuthProgress = true; //блокировка на время авторизации
-    notifyListeners(); //!выдает исключение
+    _isAuthProgress = true;
+    notifyListeners();
 
-    String? sessionId; //обьявляем здесь
+    String? sessionId;
     int? accountId;
     try {
       sessionId = await _apiClient.auth(username: login, password: password);
@@ -70,23 +61,18 @@ class AuthWidgetModel extends ChangeNotifier {
     } catch (e) {
       _errorText = 'Произошла ошибка попробуйте еще';
     }
-    _isAuthProgress = false; //разблокировка
+    _isAuthProgress = false;
 
-//---проверочки
     if (_errorText != null) {
       notifyListeners();
       return;
     }
     if (sessionId == null) {
-      //типа лишняя проверка
       _errorText = 'Неизвестная ошибка, повторите попытку';
       notifyListeners();
       return;
     }
-////---проверочки
-
-    await _sessionDataProvider.setSessionId(
-        sessionId); //передача ключа в SessionDataProvider на хранение
+    await _sessionDataProvider.setSessionId(sessionId);
     await _sessionDataProvider.setAccountId(accountId.toString());
 
     unawaited(Navigator.of(context)
@@ -111,19 +97,12 @@ class AuthWidgetModelProvider extends InheritedNotifier<AuthWidgetModel> {
   static AuthWidgetModelProvider? watch(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<AuthWidgetModelProvider>();
-    //?.notifier;
   }
 
   static AuthWidgetModelProvider? read(BuildContext context) {
     final widget = context
         .getElementForInheritedWidgetOfExactType<AuthWidgetModelProvider>()
         ?.widget;
-    return widget is AuthWidgetModelProvider
-        ? widget
-        : null; //                   .notifier : null;
+    return widget is AuthWidgetModelProvider ? widget : null;
   }
-
-  // @override
-  //bool updateShouldNotify(AuthWidgetModelProvider  oldWidget) {
-  //  return notifier != oldWidget.notifier;
 }

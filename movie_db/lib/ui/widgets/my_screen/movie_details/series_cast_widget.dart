@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_db_hard/ui/widgets/my_screen/movie_details/movie_details_model.dart';
-
 import '../../../../domain/api_client/api_client.dart';
 
 class SeriesCastWidget extends StatelessWidget {
@@ -39,11 +38,6 @@ class SeriesCastWidget extends StatelessWidget {
                 acters != null
                     ? posterPath = acters[index].profile_path
                     : posterPath = '';
-
-                ///rH3GXMtjB73W8G2toCa6wZZqeAD.jpg'
-
-                //
-                //
                 return Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
@@ -56,9 +50,6 @@ class SeriesCastWidget extends StatelessWidget {
                           color: Colors.white,
                           border: Border.all(
                             color: const Color.fromARGB(182, 68, 68, 68),
-                            // width: 1.0,
-                            // style: BorderStyle.solid,
-                            // strokeAlign: BorderSide.strokeAlignInside
                           ),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
@@ -67,8 +58,6 @@ class SeriesCastWidget extends StatelessWidget {
                               color: Colors.black45,
                               offset: Offset(0, 3),
                               blurRadius: 10,
-
-                              //blurStyle: BlurStyle.normal
                             )
                           ],
                         ),
@@ -76,7 +65,6 @@ class SeriesCastWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              //color: Colors.black,
                               height: 200,
                               width: 170,
                               child: posterPath != null
@@ -90,7 +78,6 @@ class SeriesCastWidget extends StatelessWidget {
                                           child: Text('Not photo')),
                                     ),
                             ),
-                            //const SizedBox(width: 10),
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -98,9 +85,7 @@ class SeriesCastWidget extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text(
-                                        //'kjhk',
-                                        acters?[index].name ?? 'Error',
+                                    Text(acters?[index].name ?? 'Error',
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
@@ -127,7 +112,6 @@ class SeriesCastWidget extends StatelessWidget {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(10),
                           onTap: () => {},
-                          //watch.onTapMovie(context, movie?.id?? 507089)
                         ),
                       )
                     ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_db_hard/domain/data_providers/session_data_provider.dart';
-import '../../../domain/api_client/api_client.dart';
 import 'main_screen_model.dart';
 import 'movi_screen.dart';
 
@@ -85,7 +84,6 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
           ),
         ],
         currentIndex: _selectedIndex,
-        // selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
     );

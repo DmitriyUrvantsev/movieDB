@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../domain/api_client/api_client.dart';
 import 'movie_details_model.dart';
 
@@ -96,7 +95,6 @@ class _MovieNameWidget extends StatelessWidget {
 
     return Center(
       child: RichText(
-          // возможность использования разных стилей текста в одной строке? которая будет себя вести как единая строка
           maxLines: 3,
           textAlign: TextAlign.center,
           text: TextSpan(
@@ -133,9 +131,6 @@ class _ScoreWidget extends StatelessWidget {
     final percent = rating != null ? rating / 10 : 0;
     final trailer = model?.movieDetails?.videos?.results;
     final chek = trailer == null || trailer.isEmpty;
-    // final youTubeKeyString =
-    //     model?.movieDetails?.videos?.results?.first?.key ?? '0';
-    // final youTubeKey = int.tryParse(youTubeKeyString);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -180,8 +175,6 @@ class _ScoreWidget extends StatelessWidget {
             ),
             style: TextButton.styleFrom(iconColor: Colors.grey[800]),
           ),
-
-        //const SizedBox(width: 123)
       ],
     );
   }
@@ -267,23 +260,17 @@ class _CastPersonWidget extends StatelessWidget {
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //childAspectRatio: 4,
-            crossAxisCount: 2, // number of items in each row
-            mainAxisSpacing: 8.0, // spacing between rows
-            crossAxisSpacing: 8.0, // spacing between columns
+            crossAxisCount: 2,
+            mainAxisSpacing: 8.0,
+            crossAxisSpacing: 8.0,
             mainAxisExtent: 45),
-
-        padding: const EdgeInsets.symmetric(
-            horizontal: 10), // padding around the grid
-        itemCount: mapCrew?.length ?? 0, // total number of items
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        itemCount: mapCrew?.length ?? 0,
         itemBuilder: (context, index) {
-          /////
-
           const textStyle = TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400);
           return Container(
             alignment: Alignment.centerLeft,
-            //color: Colors.blue, // color of grid items
             child: Text(
               '${mapCrew?[index].keys.toList().join() ?? '0'} \n ${mapCrew?[index].values.toList().join() ?? '0'}',
               maxLines: 2,

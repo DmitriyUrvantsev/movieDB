@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../theme/constats.dart';
 import 'auth_widget_model.dart';
 
@@ -13,7 +12,6 @@ class AuthWidget extends StatefulWidget {
 }
 
 class _AuthWidgetState extends State<AuthWidget> {
-  //final _modelAuth = AuthWidgetModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +29,10 @@ class HederWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //const textStyle = Constants.textStyleHader;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(children: [
-        FormWidget(),
+        const FormWidget(),
         const SizedBox(height: 25),
         _DescriptionWidget(),
       ]),
@@ -70,17 +66,13 @@ class FormWidget extends StatelessWidget {
           TextField(
             controller: read?.loginController,
             decoration: inputDecoration,
-            //maxLength: 8,
-            //obscureText: true,
           ),
           const SizedBox(height: 10),
           const Text('Password', style: textStyle),
           const SizedBox(height: 5),
           TextField(
             controller: read?.passwordController,
-
             decoration: inputDecoration,
-            //maxLength: 8,
             obscureText: true,
           ),
           const SizedBox(width: 25),
@@ -91,9 +83,7 @@ class FormWidget extends StatelessWidget {
               TextButton(
                 onPressed: read?.resetPassword,
                 style: const ButtonStyle(
-                  //overlayColor: MaterialStatePropertyAll(Colors.red),// color araund bottom
-                  foregroundColor:
-                      MaterialStatePropertyAll(Colors.red), //color text
+                  foregroundColor: MaterialStatePropertyAll(Colors.red),
                 ),
                 child: const Text('Details'),
               )
@@ -113,8 +103,8 @@ class _AuthButtonWidget extends StatelessWidget {
     final watch = AuthWidgetModelProvider.watch(context)?.model;
     final read = AuthWidgetModelProvider.read(context)?.model;
     final onPressed = watch?.canAuth == true ? () => read?.auth(context) : null;
-//!!!!!!!!!!!!!!! бля)))))))) ... всего то не сделал () =>, а просто read?.auth(context),
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ипосыпались ошибко в моделе на notifyListeners(); - типа строится виджет а вы перестраиваите
+// )))))))) ... всего то не сделал () =>, а просто read?.auth(context),
+// ипосыпались ошибко в моделе на notifyListeners(); - типа строится виджет а вы перестраиваите КАПЕЦ...
     final colorsButton =
         watch?.isAuthProgress == false ? Colors.blue : Colors.grey[300];
     final textButton = watch?.isAuthProgress == false
@@ -132,10 +122,6 @@ class _AuthButtonWidget extends StatelessWidget {
           );
     return ElevatedButton(
       onPressed: onPressed,
-      //() => read?.auth(context),
-      //onPressed,
-      //navigation;
-
       style: ButtonStyle(
           backgroundColor: MaterialStatePropertyAll(colorsButton),
           overlayColor: const MaterialStatePropertyAll(Colors.green),
@@ -168,8 +154,6 @@ class _DescriptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return RichText(
-          // возможность использования разных стилей текста в одной строке? которая будет себя вести как единая строка
-
           textAlign: TextAlign.start,
           text: const TextSpan(
             children: [

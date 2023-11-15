@@ -85,7 +85,6 @@ class _ScoreSceletonWidget extends StatelessWidget {
               height: 14,
               width: 135,
               borderRadius: BorderRadius.circular(8),
-              // alignment: Alignment.center),
             ),
           ),
           //--------------------------------------
@@ -96,7 +95,6 @@ class _ScoreSceletonWidget extends StatelessWidget {
               height: 14,
               width: 135,
               borderRadius: BorderRadius.circular(8),
-              // alignment: Alignment.center),
             ),
           ),
         ],

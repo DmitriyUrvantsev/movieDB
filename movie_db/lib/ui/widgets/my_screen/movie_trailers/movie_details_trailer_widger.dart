@@ -1,7 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+// ignore: must_be_immutable
 class MovieDetailsTrailerWidget extends StatefulWidget {
   String youTubeKey;
   MovieDetailsTrailerWidget({
@@ -57,9 +57,7 @@ class _MovieDetailsTrailerWidgetState extends State<MovieDetailsTrailerWidget> {
             color: Colors.white,
             size: 25.0,
           ),
-          onPressed: () {
-            //log('Settings Tapped!');
-          },
+          onPressed: () {},
         ),
       ],
     );

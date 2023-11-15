@@ -17,6 +17,7 @@ class MyAppModel extends ChangeNotifier {
   Future<void> ressetSession(BuildContext context) async {
     await _sessionDataProvider.setSessionId(null);
     await _sessionDataProvider.setAccountId(null);
+    // ignore: use_build_context_synchronously
     await Navigator.of(context).pushNamedAndRemoveUntil(
       MainNavigationRoutsName.auth,
       (route) => false, // false - закрытие всех экранов

@@ -37,14 +37,11 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
     final model = MovieDetailsModelProvider.read(context)?.model;
     if (model?.movieDetails == null) {
       _model.setupLocale(context);
-      // при первом запуске или смене локали - обновление локали и фильмов
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    //final movie = MovieDetailsModelProvider.read(context)?.model.movieDetails;
-
     return MovieDetailsModelProvider(
         model: _model, child: const MovieDetailsBodyWidget());
   }
@@ -94,8 +91,7 @@ class BodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final movie = //null;
-        MovieDetailsModelProvider.watch(context)?.model.movieDetails;
+    final movie = MovieDetailsModelProvider.watch(context)?.model.movieDetails;
 
     if (movie == null) {
       return const MovieDetailsSceletonWidget();
@@ -108,7 +104,3 @@ class BodyWidget extends StatelessWidget {
     );
   }
 }
-
-//?-----------------------------------------------------------------------------
-//?-----------------------------------------------------------------------------
-// ы
