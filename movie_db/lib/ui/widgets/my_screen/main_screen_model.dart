@@ -22,6 +22,9 @@ class MovieScreenModel extends ChangeNotifier {
   String? _serchQuery;
   Timer? _serchDeboubce;
 
+  Future<void> Function()? onSessionExpired;
+  //!функция для выброса на главную при истечении sessionId
+
 //!---------------MovieDetails--------------
   // MovieDetails? _movie;
   // MovieDetails? get movie => _movie;
@@ -57,6 +60,7 @@ class MovieScreenModel extends ChangeNotifier {
   Future<PopularMovieRespons> _selectedLoading(
       String locale, int nextPage) async {
     final query = _serchQuery;
+
     if (query == null) {
       return await _apiClient.getPopularMovies(locale, nextPage);
     } else {
@@ -121,10 +125,7 @@ class MovieScreenModel extends ChangeNotifier {
       if (_serchQuery == serchQuery) return; //если запрос не изменился return
       _serchQuery = serchQuery;
       await _resetMovieList();
-      //notifyListeners();
     });
-
-    //print(text);
   }
 
 //--------------

@@ -55,14 +55,17 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         children: [
           MovieScreenModelProvider(
               model: movieScreenModel, child: const MovieWidget()),
-          Image.network(
-            ApiClient.imageUrl(
-                'https://image.tmdb.org/t/p/w500/mOX5O6JjCUWtlYp5D8wajuQRVgy.jpg'),
-            width: 95,
+          const Center(
+            child: Text(
+              'TV',
+              style: optionStyle,
+            ),
           ),
-          const Text(
-            'Index 2: School',
-            style: optionStyle,
+          const Center(
+            child: Text(
+              'News',
+              style: optionStyle,
+            ),
           ),
         ],
       ),
@@ -73,12 +76,12 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             label: 'Movie',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.tv),
+            label: 'TV',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.newspaper),
+            label: 'News',
           ),
         ],
         currentIndex: _selectedIndex,
